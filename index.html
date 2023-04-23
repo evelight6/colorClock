@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2023 by anonymous (http://jsbin.com/wemunudaye/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <title>Színóra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+
+<style id="jsbin-css">
+* { margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+}
+
+#clock {
+  text-align: center;
+  position: relative;
+  bottom: -50%;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 8rem;
+  margin-top: -4rem;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+</body>
+<script id="jsbin-javascript">
+var date = new Date();
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var seconds = date.getSeconds();
+console.log(hours + ':' + minutes + ':'  + seconds);
+if (hours < 10) {
+  hours = '0' + seconds;
+}
+if (minutes < 10) {
+  minutes = '0' + seconds;
+}
+if (seconds < 10) {
+  seconds = '0' + seconds;
+}
+var clockFace = hours + ':' + minutes + ':'  + seconds;
+document.getElementById('clock').innerHTML = clockFace;
+if (seconds < 10) {
+  seconds = '0' + seconds;
+}
+
+function colorClock(){
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  if (hours <= 9) {
+    hours = '0' + hours;
+  }
+  if (minutes <= 9) {
+    minutes = '0' + minutes;
+  }
+  if (seconds <= 9) {
+    seconds = '0' + seconds;
+  }
+
+  var clockFace = hours + '||' + minutes + '||' + seconds;
+  
+  document.getElementById('clock').innerHTML = clockFace;
+  
+  setTimeout(function() {
+  colorClock();
+}, 1000);
+  
+  var hexColor = '#' + hours + minutes + seconds;
+  document.body.style.background = hexColor;
+}
+
+colorClock();
+
+document.body.style.background = 'red';
+</script>
+</body>
+</html>
